@@ -2,10 +2,12 @@ import psycopg2
 import os
 from dotenv import load_dotenv
 
-DB_NAME = 'mydqblep'
-DB_USER = 'mydqblep'
-DB_PASSWORD = 'CstliUgtN8dt1csStj7CeXfov7m3-g5e'
-DB_HOST = 'lallah.db.elephantsql.com'
+load_dotenv()
+
+DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DP_PASSWORD")
+DB_HOST = os.getenv("DB_HOST")
 
 connection = psycopg2.connect(dbname = DB_NAME, user = DB_USER,
                         password = DB_PASSWORD, host = DB_HOST)
