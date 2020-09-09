@@ -26,7 +26,7 @@ cursor.execute('''CREATE TABLE titanic_table
 (Survived, Pclass, name, Sex, Age, 
 Siblings_Spouses_Aboard, 
 Parents_Children_Aboard, 
-Fare)
+Fare);
 
 ''')
 
