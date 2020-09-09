@@ -2,7 +2,7 @@ import sqlite3
 import pymongo
 import dns
 
-client = pymongo.MongoClient("mongodb+srv://JKMHensiek:ziFtbYukdGRoXFGY@cluster0.98jkv.mongodb.net/test?retryWrites=true&w=majority")
+client = pymongo.MongoClient("mongodb+srv://JKMHensiek:password@cluster0.98jkv.mongodb.net/test?retryWrites=true&w=majority")
 db = client.test
 
 connection = sqlite3.connect('rpg_db.sqlite3')
