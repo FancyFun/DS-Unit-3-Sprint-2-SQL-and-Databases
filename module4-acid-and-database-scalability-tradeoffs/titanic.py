@@ -21,7 +21,8 @@ cursor2.execute('''SELECT Survived, Pclass, name, Sex, Age, Siblings_Spouses_Abo
 
 result2 = cursor2.fetchall()
 
-cursor.execute('''CREATE TABLE IF NOT EXISTS titanic_table ( 
+cursor.execute('''DROP TABLE IF EXISTS titanic_table; 
+    CREATE TABLE IF NOT EXISTS titanic_table ( 
     Survived int, 
     Pclass int, 
     name text, 
@@ -41,12 +42,55 @@ cursor.close()
 connection.commit()
 cursor = connection.cursor()
 
-cursor.execute('''SELECT * FROM titanic_table;
+cursor.execute('''SELECT COUNT(Survived)
+FROM titanic_table
+WHERE Survived = 1;
 ''')
 
-everything = cursor.fetchall()
-print(everything)
+survived = cursor.fetchall()
+print("This many people Survived: ", survived)
+
+cursor.execute('''SELECT COUNT(Survived)
+FROM titanic_table
+WHERE Survived = 1;
+''')
+
+died = cursor.fetchall()
+print("This many people died: ", died)
+
+cursor.execute('''SELECT COUNT(Pclass)
+FROM titanic_table
+WHERE Pclass = 1;
+''')
+
+Pclass_thing1 = cursor.fetchall()
+print("people in class 1", Pclass_thing1)
+
+cursor.execute('''SELECT COUNT(Pclass)
+FROM titanic_table
+WHERE Pclass = 2;
+''')
+
+Pclass_thing2 = cursor.fetchall()
+print("people in class 2", Pclass_thing2)
+
+cursor.execute('''SELECT COUNT(Pclass)
+FROM titanic_table
+WHERE Pclass = 3;
+''')
+
+Pclass_thing3 = cursor.fetchall()
+print("people in class 3", Pclass_thing3)
+
+cursor.execute('''SELECT COUNT(Pclass)
+FROM titanic_table
+WHERE Pclass = 3
+AND Survived =1;
+''')
+
+Pclass_thing3_survived = cursor.fetchall()
+print("people who survived in class 3", Pclass_thing3_survived)
 
 cursor.close()
 connection.commit()
-cursor = connection.cursor()
+connection.close()
